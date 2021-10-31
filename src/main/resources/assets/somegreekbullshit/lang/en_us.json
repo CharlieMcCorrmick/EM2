@@ -1,7 +1,13 @@
 {
   "section1": "item Groups",
-  "itemGroup.someGreekBullshitTab": "Some Greek Bullshit",
+  "itemGroup.EM2Tab": "EM2",
 
   "section2": "items",
-  "item.somegreekbullshit.test": "Test"
+  "item.em2.test": "Test",
+
+  "section3": "blocks",
+  "block.em2.quarry_one": "Quarry One",
+
+  "section4": "screens",
+  "screen.em2.quarry_one": "Quarry One"
 }

@@ -1,8 +1,14 @@
-package com.charlie.somegreekbullshit;
+package com.charlie.em2;
 
-import com.charlie.somegreekbullshit.item.ModItems;
+import com.charlie.em2.container.ModContainers;
+import com.charlie.em2.block.ModBlocks;
+import com.charlie.em2.item.ModItems;
+import com.charlie.em2.screen.EnergyScreen;
+import com.charlie.em2.screen.QuarryOneScreen;
+import com.charlie.em2.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,15 +27,19 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(SomeGreekBullshit.MOD_ID)
-public class SomeGreekBullshit
+@Mod(EM2.MOD_ID)
+public class EM2
 {
-    public static final String MOD_ID = "somegreekbullshit";
+    public static EM2 instance;
+    public static final String MOD_ID = "em2";
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public SomeGreekBullshit() {
+    public EM2() {
+        //The mod, allows referencing the mod statically so you dont have to do voodoo witch magic like a
+        instance = this;
+
         // Event bus registration, the internet told me to
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -45,6 +55,9 @@ public class SomeGreekBullshit
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
+        ModTileEntities.register(eventBus);
+        ModContainers.register(eventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -58,6 +71,10 @@ public class SomeGreekBullshit
         // do something that can only be done on the client
         // Next line big error, not pog
         //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+        ScreenManager.registerFactory(ModContainers.QUARRY_ONE_CONTAINER.get(),
+                QuarryOneScreen::new);
+        ScreenManager.registerFactory(ModContainers.ENERGY_CONTAINER.get(),
+                EnergyScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
