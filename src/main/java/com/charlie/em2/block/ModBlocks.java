@@ -24,8 +24,14 @@ public class ModBlocks
     public static final RegistryObject<Block> QUARRY_ONE_BLOCK = registerBlock("quarry_one",
             () -> new QuarryOneBlock(AbstractBlock.Properties.create(Material.ROCK)));
 
-    public static final RegistryObject<Block> ENERGY_BLOCK = registerBlock("energy",
-            () -> new EnergyBlock(AbstractBlock.Properties.create(Material.ROCK)));
+    public static final RegistryObject<Block> ENERGY_COLLECTOR_BLOCK = registerBlock("energy_collector",
+            () -> new EnergyCollectorBlock(AbstractBlock.Properties.create(Material.ROCK)));
+
+    public static final RegistryObject<Block> ENERGY_SUPPLIER_BLOCK = registerBlock("energy_supplier",
+            () -> new EnergySupplierBlock(AbstractBlock.Properties.create(Material.ROCK)));
+
+    public static final RegistryObject<Block> EST = registerBlock("est",
+            () -> new EnergySupplierBlock(AbstractBlock.Properties.create(Material.ROCK)));
 
     public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
 
@@ -42,6 +48,6 @@ public class ModBlocks
     {
         ModItems.ITEMS.register(name,
                 () -> new BlockItem(block.get(),
-                        new Item.Properties().group(ModItemGroup.SGB_GROUP)));
+                        new Item.Properties().group(ModItemGroup.EM2Group)));
     }
 }

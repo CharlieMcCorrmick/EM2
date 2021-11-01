@@ -18,10 +18,20 @@ public class ModTileEntities
                 QuarryOneTile::new, ModBlocks.QUARRY_ONE_BLOCK.get()).build(null)
              );
 
-     public static RegistryObject<TileEntityType<EnergyTile>> ENERGY_TILE =
-             TILE_ENTITIES.register("energy_tile", () -> TileEntityType.Builder.create(
-                     EnergyTile::new, ModBlocks.ENERGY_BLOCK.get()).build(null)
+     public static RegistryObject<TileEntityType<EnergyCollectorTile>> ENERGY_COLLECTOR_TILE =
+             TILE_ENTITIES.register("energy_collector_tile", () -> TileEntityType.Builder.create(
+                     EnergyCollectorTile::new, ModBlocks.ENERGY_COLLECTOR_BLOCK.get()).build(null)
              );
+
+    public static RegistryObject<TileEntityType<EnergySupplierTile>> ENERGY_SUPPLIER_TILE =
+            TILE_ENTITIES.register("energy_supplier_tile", () -> TileEntityType.Builder.create(
+                    EnergySupplierTile::new, ModBlocks.ENERGY_SUPPLIER_BLOCK.get()).build(null)
+            );
+
+    public static RegistryObject<TileEntityType<EST>> EST =
+            TILE_ENTITIES.register("est", () -> TileEntityType.Builder.create(
+                    EST::new, ModBlocks.ENERGY_SUPPLIER_BLOCK.get()).build(null)
+            );
 
      public static void register(IEventBus eventBus)
      {

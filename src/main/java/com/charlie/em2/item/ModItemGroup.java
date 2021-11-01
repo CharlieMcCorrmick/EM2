@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class ModItemGroup
 {
-    public static final ItemGroup SGB_GROUP = new ItemGroup("someGreekBullshitTab")
+    public static final ItemGroup EM2Group = new ItemGroup("em2Tab")
     {
         @Override
         public ItemStack createIcon()
